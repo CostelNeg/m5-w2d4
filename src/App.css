@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+.TextOverflow{
+  text-overflow: ellipsis;
+  border: 1px solid;
+  border-radius: 25px;
+  padding: 1px 5px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.italic{
+  font-style: italic;
+  text-align: center;
+}
