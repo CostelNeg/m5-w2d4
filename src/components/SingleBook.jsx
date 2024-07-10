@@ -1,10 +1,13 @@
 import React from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 
-function SingleBook({ book }) {
+function SingleBook({ book, isSelected,onClick }) {
   return (
     <Col  lg={2} md={3} xs={6}>
-      <Card className="m-1" >
+      <Card 
+      className={`book-card ${isSelected ? 'selected' : ''}`} 
+      onClick={onClick}
+      >
         <Card.Img
           className=" d-flex align-self-lg-center"
           style={{ height: "200px" }}
@@ -26,5 +29,6 @@ function SingleBook({ book }) {
       </Card>
     </Col>
   );
+  
 }
 export default SingleBook;

@@ -48,3 +48,21 @@
   font-style: italic;
   text-align: center;
 }
+
+.book-card {
+  border :1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.book-card:hover {
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);;
+}
+
+.book-card.selected {
+  background-color: #f0f0f0;
+  border-color: #c22121;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
