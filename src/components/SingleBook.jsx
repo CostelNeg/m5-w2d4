@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import BookReviews from "./BookReviews";
+
 
 function SingleBook({ book, isSelected,onClick }) {
+  const [showReviews, setShowReviews] = useState(false);
+
   return (
     <Col  lg={2} md={3} xs={6}>
       <Card 
@@ -26,6 +30,14 @@ function SingleBook({ book, isSelected,onClick }) {
             </Row>
           </Container>
         </Card.Body>
+          {
+            <button onClick={ () => setShowReviews(!showReviews)}>
+              {showReviews ? 'Nascondi recensioni' : 'Mostra recensioni'}
+            </button>
+          }
+          {
+            showReviews &&<BookReviews bookAsin={book.asin} />
+          }
       </Card>
     </Col>
   );
