@@ -1,8 +1,8 @@
-import Container from "react-bootstrap/Container";
+
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 
-function MyNav() {
+function MyNav({searchTerm,handleSearchChange}) {
   return (
     <>
         <Navbar bg="dark" data-bs-theme="dark">
@@ -11,6 +11,16 @@ function MyNav() {
             <Nav.Link href="#home">Home</Nav.Link>
             <Nav.Link href="#about">About</Nav.Link>
             <Nav.Link href="#browse">Browse</Nav.Link>
+            <div className=" d-flex justify-content-center">
+        <input
+          type="text"
+          placeholder="Cerca il tuo libro"
+          value={searchTerm}
+          onChange={handleSearchChange}
+          className="search-input"
+        />
+        
+      </div>
           </Nav>
         </Navbar>
 

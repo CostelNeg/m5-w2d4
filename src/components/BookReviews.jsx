@@ -14,16 +14,16 @@ const BookReviews = ({bookAsin}) => {
     },[bookAsin]);
 
     // funzione per vedere le recensioni 
-    const fetchReviews = async () => {
+    async function fetchReviews() {
         try {
             const res = await fetch(`https://striveschool-api.herokuapp.com/api/books/${bookAsin}/comments/`);
             const data = await res.json();
             setReviews(data);
         }
-        catch (error){
-            alert('Errore nel caricamento delle recensioni', error)
+        catch (error) {
+            alert('Errore nel caricamento delle recensioni', error);
         }
-    };
+    }
 
     //inviamo una nupva recensione 
 
