@@ -3,13 +3,12 @@ import { Row } from "react-bootstrap";
 import SingleBook from "./SingleBook.jsx";
 
 
-const AllTheBooks = ({ books,searchTerm, handleBookClick,selectedBookIds, handleSearchChange }) => {
+const AllTheBooks = ({ books=[],searchTerm, onBookSelect, selectedBookIDs }) => {
   //filtriamo i libiri in base alla ricerca senza che sia caseSensitive
 
   const filteredBooks = books.filter((book) =>
     book.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
-  console.log(books);
 
   return (
     <>
@@ -20,12 +19,10 @@ const AllTheBooks = ({ books,searchTerm, handleBookClick,selectedBookIds, handle
             filteredBooks.map((book) => (
               
               <SingleBook 
-
               key={book.asin}
               book={book}
-              isSelected = {selectedBookIds.includes(book.asin)}
-              onClick ={()=>handleBookClick(book.asin)}
-
+              onClick={ () => onBookSelect(book.asin)}
+              isSelected={book.asin === selectedBookIDs}
               />
             ))
           ) : (

@@ -4,7 +4,7 @@ import Navbar from "react-bootstrap/Navbar";
 function MyNav({ searchTerm, handleSearchChange }) {
   return (
     <>
-      <Navbar bg="dark" data-bs-theme="dark">
+      <Navbar className="d-flex flex-wrap flex-row" bg="dark" data-bs-theme="dark">
         <Navbar.Brand href="#home" className="ms-3">
           EpiBooks
         </Navbar.Brand>

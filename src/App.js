@@ -1,48 +1,47 @@
-
 import "./App.css";
 import AlertDismissible from "./components/MyAlert.jsx";
 import MyNav from "./components/myNavBar";
 import AllTheBooks from "./components/AllTheBooks.jsx";
 import {books} from '../src/data/books.js'
-import React, {useState} from "react";
+import React, { useState } from "react";
+import { Col, Row } from "react-bootstrap";
+import BookReviews from "./components/BookReviews.jsx";
 
 function App() {
-  
-  const [searchTerm, setSearchTerm] =useState('');
-  const [selectedBookIds, setSelectedBookIds] =useState([])
-//questa funzione verra chiamata ogni volta che si digita nel input
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedBookIds, setSelectedBookIds] = useState(null);
+
+
+  //questa funzione verra chiamata ogni volta che si digita nel input
   // ha come paramentro un evento(e) che viene generato dal interazione con l'input
-  const handleSearchChange = (e) =>{
+  const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
-  }
+  };
 
   //adesso gestiamo il click nel app Centrle
 
-  const handleBookClick = (bookAsin) => {
-    //aggiorniamo stato , e riceve stato precedente 
-    setSelectedBookIds(prevSelected => {
-      if(prevSelected.includes(bookAsin)){
-        return prevSelected.filter(asin => asin !== bookAsin);
-      }else {
-        //usiamo lo spred operator e creaiamo un nuovo array
-        //con tutti gli elementi gia dentro, + quello nuovo
-        return [...prevSelected,bookAsin]
-      }
+  const handleBookSelect = (bookAsin) => {
+    setSelectedBookIds(bookAsin);
+  };
 
-    })
-  }
-  
   return (
     <>
       <MyNav searchTerm={searchTerm} handleSearchChange={handleSearchChange} />
       <AlertDismissible />
-      <AllTheBooks 
-      books={books} 
-      searchTerm={searchTerm}
-      handleBookClick={handleBookClick}
-      selectedBookIds={selectedBookIds}
-      handleSearchChange={handleSearchChange}
-      />
+      <Row>
+        <Col lg={8} xs={8}>
+          <AllTheBooks
+            searchTerm={searchTerm}
+            books={books}
+            onBookSelect={handleBookSelect}
+            selectedBookIds={selectedBookIds}
+          />
+        </Col>
+        <Col lg={3} xs={3}>
+          <BookReviews 
+          bookAsin={selectedBookIds}/>
+        </Col>
+      </Row>
     </>
   );
 }

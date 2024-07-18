@@ -10,6 +10,9 @@ const BookReviews = ({bookAsin}) => {
 
     //effeto che si attiva quando cambiamo book
     useEffect(() => {
+        const fetchReviews = async () => {
+            
+        }
         fetchReviews();
     },[bookAsin]);
 
